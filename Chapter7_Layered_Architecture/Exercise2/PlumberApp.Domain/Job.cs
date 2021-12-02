@@ -4,10 +4,21 @@ namespace PlumberApp.Domain
 {
     public class Job : IJob
     {
-        public Guid Id => throw new NotImplementedException();
+        Job() { }
+        public Job(String description, Guid workloadId)
+        {
+            this.Description = description;
+        }
 
-        public string Description => throw new NotImplementedException();
+        public Guid Id { get; private set; }
 
-        public Guid WorkloadId => throw new NotImplementedException();
+        public string Description { get; private set; }
+
+        public Guid WorkloadId { get; private set; }
+
+        public override string ToString()
+        {
+            return this.Description;
+        }
     }
 }

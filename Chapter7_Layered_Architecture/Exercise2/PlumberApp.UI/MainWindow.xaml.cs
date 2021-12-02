@@ -24,12 +24,12 @@ namespace PlumberApp.UI
 
         private void OnWorkloadSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //TODO: set selected workload
+            this.SelectedWorkload = new Workload(WorkloadNameTextBox.Text, 10);
         }
 
         private void OnAddWorkloadClick(object sender, RoutedEventArgs e)
         {
-            //TODO: add workload
+            this.AllWorkloads.Add(this.SelectedWorkload);
         }
 
         private void OnAddJobClick(object sender, RoutedEventArgs e)

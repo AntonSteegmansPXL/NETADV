@@ -5,17 +5,44 @@ namespace PlumberApp.Domain
 {
     public class Workload : IWorkload
     {
-        public Guid Id => throw new NotImplementedException();
+        Workload() {
+            this.Jobs = new List<Job>();
+            this.Capacity = 10;
+            this.Name = "aub";
+            this.Id = new Guid();
+        }
 
-        public string Name => throw new NotImplementedException();
+        public Workload(String name, int capacity)
+        {
+            if (capacity <= 0 || name == "" || name == null)
+            {
+                throw new ArgumentException();
+            } else
+            {
+                this.Capacity = capacity;
+                this.Name = name;
+                this.Id = new Guid();
+            }
 
-        public int Capacity => throw new NotImplementedException();
+        }
 
-        public IReadOnlyCollection<IJob> Jobs => throw new NotImplementedException();
+        public Guid Id { get; private set; }
+
+        public string Name { get; private set; }
+
+        public int Capacity { get; private set; }
+
+
+        public IReadOnlyCollection<IJob> Jobs { get; set; }
 
         public void AddJob(string description)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException(); 
+        }
+
+        public override string ToString()
+        {
+            return this.Name + " " + this.Capacity;
         }
     }
 }
