@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Guts.Client.Classic;
 using Guts.Client.Shared;
 using Guts.Client.Shared.TestTools;
 using NUnit.Framework;
@@ -8,6 +9,7 @@ using PlumberApp.Domain;
 
 namespace PlumberApp.Tests
 {
+    [ExerciseTestFixture("dotnet2", "H07", "Exercise02", @"PlumberApp.Domain\Workload.cs")]
     public class WorkloadTests : TestBase
     {
         private Type _workloadType;
@@ -42,6 +44,11 @@ namespace PlumberApp.Tests
 
             Assert.That(constructor, Is.Not.Null, "Cannot find a private constructor.");
             Assert.That(constructor.GetParameters().Length, Is.Zero, "The private constructor should not have parameters.");
+
+            IWorkload workload = constructor.Invoke(new object[] { }) as IWorkload;
+            Assert.That(workload, Is.Not.Null, "Could not cast the 'Workload' to an 'IWorkload'.");
+            Assert.That(workload.Jobs, Is.Not.Null, "The 'Jobs' list should be an empty list after the private constructor is used.");
+            Assert.That(workload.Jobs.Count, Is.Zero, "The 'Jobs' list should be an empty list after the private constructor is used.");
 
             AssertHasPrivateSetter(_workloadType, nameof(IWorkload.Id));
             AssertHasPrivateSetter(_workloadType, nameof(IWorkload.Name));
