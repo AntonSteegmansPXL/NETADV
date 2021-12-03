@@ -37,6 +37,9 @@ namespace PlumberApp.Domain
 
         public void AddJob(string description)
         {
+            Job newJob = new Job(description, Id);
+            //Jobs.Add(newJob);
+
             throw new InvalidOperationException(); 
         }
 

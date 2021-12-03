@@ -5,9 +5,17 @@ namespace PlumberApp.Domain
     public class Job : IJob
     {
         Job() { }
+
         public Job(String description, Guid workloadId)
         {
             this.Description = description;
+            this.Id = workloadId;
+            this.WorkloadId = workloadId;
+        }
+
+        public Job(string description)
+        {
+            Description = description;
         }
 
         public Guid Id { get; private set; }

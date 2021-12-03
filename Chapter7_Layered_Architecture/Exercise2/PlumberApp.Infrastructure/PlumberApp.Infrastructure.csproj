@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PlumberApp.AppLogic\PlumberApp.AppLogic.csproj">
+      <Project>{12BD4076-4190-487C-A35F-D64C6E97FFE0}</Project>
+      <Name>PlumberApp.AppLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PlumberApp.Domain\PlumberApp.Domain.csproj">
       <Project>{D0167C27-4CFB-44AE-BC92-036BB29D89CE}</Project>
       <Name>PlumberApp.Domain</Name>

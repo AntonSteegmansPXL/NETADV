@@ -8,7 +8,13 @@ namespace NumberConverter.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            if (value is int)
+            {
+                return value;
+            } else
+            {
+                return "Invalid number";
+            }
 
         }
 

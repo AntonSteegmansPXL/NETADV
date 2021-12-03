@@ -104,6 +104,10 @@
       <Project>{D0167C27-4CFB-44AE-BC92-036BB29D89CE}</Project>
       <Name>PlumberApp.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PlumberApp.Infrastructure\PlumberApp.Infrastructure.csproj">
+      <Project>{7535FA7E-4431-470B-B020-111DAF033E4D}</Project>
+      <Name>PlumberApp.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

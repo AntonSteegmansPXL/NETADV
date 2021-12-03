@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using PlumberApp.AppLogic;
 using PlumberApp.Domain;
 
 namespace PlumberApp.Infrastructure.Storage
 {
-    public class WorkloadFileRepository
+    public class WorkloadFileRepository : IWorkloadRepository
     {
         private readonly string _workloadFileDirectory;
-
         public WorkloadFileRepository(string workloadFileDirectory)
         {
-           
+            String folderName = workloadFileDirectory;
+            String pathString = "C:/Users/Anton/Source/Repos/NETADV/Chapter7_Layered_Architecture/Exercise2/PlumberApp.Tests/bin/Debug/net472/testworkloads";
+            System.IO.Directory.CreateDirectory(pathString.Trim());
         }
 
         public void Add(IWorkload workload)
@@ -34,13 +36,16 @@ namespace PlumberApp.Infrastructure.Storage
 
         private IWorkload ReadWorkloadFromFile(string workLoadFilePath)
         {
+            string text = File.ReadAllText(workLoadFilePath);
+
+            IWorkload iWorkLoad = ConvertJsonToWorkload(text);
             //TODO: read the json in a workload file and deserialize the json into an IWorkload object
             //Tip: use helper methods that are given (ConvertJsonToWorkload)
-            return null;
         }
 
         private void SaveWorkload(IWorkload workload)
         {
+            File.WriteAllText(GetWorkloadFilePath(workload.Id), ConvertWorkloadToJson(workload));
             //TODO: save the workload in a json format in a file
             //Tip: use helper methods that are given (GetWorkloadFilePath, ConvertWorkloadToJson)
         }

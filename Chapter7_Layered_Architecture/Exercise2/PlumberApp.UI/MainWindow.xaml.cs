@@ -20,6 +20,7 @@ namespace PlumberApp.UI
         public MainWindow(IWorkloadRepository workloadRepository)
         {
             InitializeComponent();
+            workloadRepository.GetAll();
         }
 
         private void OnWorkloadSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -30,12 +31,22 @@ namespace PlumberApp.UI
         private void OnAddWorkloadClick(object sender, RoutedEventArgs e)
         {
             this.AllWorkloads.Add(this.SelectedWorkload);
+
         }
 
         private void OnAddJobClick(object sender, RoutedEventArgs e)
         {
             //TODO: add job
-            JobsListView.Items.Refresh(); //Makes sure the added job is shown in the UI
+            if (SelectedWorkload == null)
+            {
+
+            } else
+            {
+                this.SelectedWorkload.AddJob(JobDescriptionTextBox.Text);
+                //this.SelectedWorkload
+                JobsListView.Items.Refresh(); //Makes sure the added job is shown in the UI
+            }
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
