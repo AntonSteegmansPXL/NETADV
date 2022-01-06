@@ -11,6 +11,13 @@ namespace NumberConverter.UI.Tests
         public void Convert_ShouldThrowArgumentExceptionWhenValueIsNotAString()
         {
             RomanNumberConverter roman = new RomanNumberConverter();
+
+            Assert.That(() =>
+            {
+                roman.Convert(new object(), null, null, null);
+
+            }).Throws.InstanceOf<ArgumentException>().With.Message.Contains("string");
+
         }
 
         [Test]
@@ -25,19 +32,22 @@ namespace NumberConverter.UI.Tests
         }
 
         [Test]
-        public void Convert_ShouldReturnOutOfRangeWhenTheValueIsNotBetweeOneAnd3999()
+        public void Convert_ShouldReturnOutOfRangeWhenTheValueIsNotBetweeOneAnd3999(string parameter)
         {
             RomanNumberConverter roman = new RomanNumberConverter();
+            Assert.That(roman.Convert(4000, null, null, null) == "Out of range");
         }
 
         [Test]
         [TestCase("1", "I")]
-        [TestCase("2", "V")]
-        [TestCase("3", "X")]
-        [TestCase("4", "L")]
+        [TestCase("5", "V")]
+        [TestCase("10", "X")]
+        [TestCase("50", "L")]
         public void Convert_ShouldCorrectlyConvertValidNumbers(string een, string twee)
         {
             RomanNumberConverter roman = new RomanNumberConverter();
+            Assert.That(Equals(twee, roman.Convert(een, null, null, null)));
+
         }
     }
 }

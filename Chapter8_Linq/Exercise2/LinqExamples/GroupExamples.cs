@@ -11,8 +11,8 @@ namespace LinqExamples
 
         public IList<IGrouping<bool, int>> GroupSmallAndBigNumbers(int[] numbers)
         {
-            throw new NotImplementedException();
-           
+            return null;
+
         }
 
         public IList<PersonAgeGroup> GroupPersonsByAge(List<Person> persons)

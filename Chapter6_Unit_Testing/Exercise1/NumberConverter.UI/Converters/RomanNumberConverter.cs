@@ -8,14 +8,23 @@ namespace NumberConverter.UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            
+            
+            if(value is string)
+            {
+
+            } else
+            {
+                throw new ArgumentException();
+            }
+
             if (value is int)
             {
-                return value;
+                return null;
             } else
             {
                 return "Invalid number";
             }
-
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
